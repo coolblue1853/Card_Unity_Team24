@@ -17,27 +17,17 @@ public abstract class UI_Base : MonoBehaviour
     // 원하는 컴포넌트를 딕셔너리에 등록
     protected void Bind<T>(Type type) where T : UnityEngine.Object
     {
+        //타입 이름 배열
         string[] names = Enum.GetNames(type);
-        UnityEngine.Object[] newObjects = new UnityEngine.Object[names.Length];
+        UnityEngine.Object[] objects = new UnityEngine.Object[name.Length];
+        this.objects.Add(typeof(T), objects);
 
         for (int i = 0; i < names.Length; i++)
         {
-            newObjects[i] = FindChild<T>(gameObject, names[i], true);
-            if (newObjects[i] == null)
-                Debug.Log($"Failed to bind {names[i]}");
-        }
-
-        //이미 값이 있다면
-        if (objects.TryGetValue(typeof(T), out var existingObjects))
-        {
-            UnityEngine.Object[] combined = new UnityEngine.Object[existingObjects.Length + newObjects.Length];
-            existingObjects.CopyTo(combined, 0);
-            newObjects.CopyTo(combined, existingObjects.Length);
-            objects[typeof(T)] = combined;
-        }
-        else
-        {
-            objects.Add(typeof(T), newObjects);
+            // 컴포넌트 찾기
+            objects[i] = FindChild<T>(gameObject, names[i], true);
+            if (objects[i] == null)
+                Debug.Log($"Failed to bind{names[i]}");
         }
     }
     // 원하는 컴포넌트를 딕셔너리에서 추출

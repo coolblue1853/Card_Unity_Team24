@@ -15,4 +15,9 @@ public class UI_Popup : UI_Base
     {
         UIManager.instance.ClosePopupUI(this);
     }
+
+    protected void SetPivot(Vector3 pos, RectTransform pivot)
+    {
+        pivot.position += pos;
+    }
 }

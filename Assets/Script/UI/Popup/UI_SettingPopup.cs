@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class UI_SettingPopup : UI_Popup
 {
+    [SerializeField]
+    private Vector3 pos;
     enum Sliders
     {
         BGMSlider,
@@ -17,12 +19,17 @@ public class UI_SettingPopup : UI_Popup
         PointButton,
         GoStartButton
     }
+    enum Pivot
+    {
+        Pivot
+    }
     public override void Init()
     {
         base.Init();
 
         Bind<Slider>(typeof(Sliders));
         Bind<Button>(typeof(Buttons));
+        Bind<RectTransform>(typeof(Pivot));
 
         Get<Button>((int)Buttons.PointButton).onClick.AddListener(OnPointButtonClicked);
         Button goStartButton =  Get<Button>((int)Buttons.GoStartButton);
@@ -38,7 +45,9 @@ public class UI_SettingPopup : UI_Popup
         sfxSlider.onValueChanged.AddListener(OnSFXSliderValueChange);
         sfxSlider.value = SoundManager.instance.SfxVolume;
 
+        // ÇÇ¹þ ¼³Á¤
 
+        SetPivot(pos, Get<RectTransform>((int)Pivot.Pivot));
     }
 
 

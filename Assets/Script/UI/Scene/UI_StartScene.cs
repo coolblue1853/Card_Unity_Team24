@@ -15,7 +15,6 @@ public class UI_StartScene : UI_Scene
         NomalModeButton,
         HardModeButton,
         QuitButton,
-
     }
     public override void Init()
     {

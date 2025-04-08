@@ -65,22 +65,20 @@ public class UIManager : MonoBehaviour
         }
          
     }
-    public GameObject ShowPopupUI(string name = null, Transform pivot = null)
+    public GameObject ShowPopupUI(string name = null)
     {
         GameObject prefab = Resources.Load<GameObject>($"Prefabs/UI/Popup/{name}");
-        GameObject ui = Instantiate(prefab); 
+        GameObject ui = Instantiate(prefab);
         if (ui == null)
             return null;
-
-        if(pivot != null) { }
-
 
         UI_Popup popup = ui.GetComponent<UI_Popup>();
         _popupStack.Push(popup);
 
-        ui.transform.SetParent(Root.transform);
+        ui.transform.SetParent(Root.transform, false);
         return ui;
     }
+
 
     //확정적으로 원하는녀석 삭제하는지 체크
     public void ClosePopupUI(UI_Popup popup)

@@ -10,11 +10,14 @@ public class UI_ShowUIButton : UI_Scene
     [SerializeField]
     private string uiName;
     private GameObject popupUI;
+    [SerializeField]
+    Vector3 pivotPos;
     enum Buttons
     {
         PointButton,
 
     }
+
     public override void Init()
     {
         base.Init();
@@ -24,7 +27,6 @@ public class UI_ShowUIButton : UI_Scene
         Bind<Button>(typeof(Buttons));
 
         Get<Button>((int)Buttons.PointButton).onClick.AddListener(OnPointButtonClicked);
-
     }
 
     protected void OnPointButtonClicked()

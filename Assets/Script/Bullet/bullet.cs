@@ -6,8 +6,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     Vector2 direction;
-    public float speed = 5f;
+    float speed;
 
+    private void Start()
+    {
+        speed = Random.Range(4, 6);
+    }
     void Update()
     {
         transform.Translate(direction * speed *  Time.deltaTime);

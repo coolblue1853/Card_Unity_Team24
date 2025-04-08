@@ -42,7 +42,7 @@ public class BulletManager : MonoBehaviour
             direction = (targetPos - spawn).normalized;
         }
 
-        bullets[pivot].GetComponent<bullet>().Direction(direction);
+        bullets[pivot].GetComponent<Bullet>().Direction(direction);
 
         Vector2 GetRandomPosition()
         {

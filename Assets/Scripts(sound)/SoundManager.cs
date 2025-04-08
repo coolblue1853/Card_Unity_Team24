@@ -13,11 +13,6 @@ public class SoundManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);//scene을 이동해도 audio가 파괴안되게
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 

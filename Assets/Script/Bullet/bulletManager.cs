@@ -11,7 +11,7 @@ public class bulletManager : MonoBehaviour
     int pivot = 0;
     void Start()
     {
-        bullets = new GameObject[100];
+        bullets = new GameObject[30];
         for(int i = 0; i < bullets.Length; i++)
         {
             GameObject gameObject = Instantiate(bulletPrefab);
@@ -23,11 +23,11 @@ public class bulletManager : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         bullets[pivot].SetActive(true);
 
         Vector2 spawn = GetRandomPosition();
-        bulletPrefab.transform.position = spawn;
+        bullets[pivot].transform.position = spawn;
 
         Vector2 direction;
 
@@ -38,10 +38,12 @@ public class bulletManager : MonoBehaviour
         }
         else
         {
-            Vector2 targetPos = new Vector2(Random.Range(-3, 3), Random.Range(-5, 5));
+            Vector2 targetPos = new Vector2(Random.Range(-1, 1), Random.Range(-1, 1));
             direction = (targetPos - spawn).normalized;
         }
-        
+
+        bullets[pivot].GetComponent<bullet>().Direction(direction);
+
         Vector2 GetRandomPosition()
         {
             int num = Random.Range(1,5);

@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
-    public bool isstratGame = false;
-
     public static SoundManager Instance; 
 
     AudioSource audiosource;
@@ -15,6 +14,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip FlipSound;
     public AudioClip MatchSound;
     public AudioClip FailSound;
+
+    
 
     private void Awake()
     {
@@ -28,13 +29,14 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
+        string currentScene = SceneManager.GetActiveScene().name;
         audiosource = GetComponent<AudioSource>();
-        if (!isstratGame)
+        if (currentScene == "Start")
         {
             audiosource.clip = this.MainBgm;
             audiosource.Play();
         }
-        else if(isstratGame)
+        else if(currentScene == "Game")
         {
             audiosource.clip = this.GameBgm;
             audiosource.Play();

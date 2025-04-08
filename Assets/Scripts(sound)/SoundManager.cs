@@ -43,6 +43,7 @@ public class SoundManager : MonoBehaviour
     public void FevertimeBgm()
     {
         audiosource.clip = this.FeverBgm;
+        audiosource.Play();
     }
 
     public void FlipSd()

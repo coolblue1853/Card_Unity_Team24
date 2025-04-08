@@ -11,11 +11,10 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip MainBgm;
     public AudioClip GameBgm;
+    public AudioClip FeverBgm;
     public AudioClip FlipSound;
     public AudioClip MatchSound;
     public AudioClip FailSound;
-
-    
 
     private void Awake()
     {
@@ -24,8 +23,6 @@ public class SoundManager : MonoBehaviour
             Instance = this;
         }
     }
-
-
 
     void Start()
     {
@@ -41,6 +38,11 @@ public class SoundManager : MonoBehaviour
             audiosource.clip = this.GameBgm;
             audiosource.Play();
         }
+    }
+
+    public void FevertimeBgm()
+    {
+        audiosource.clip = this.FeverBgm;
     }
 
     public void FlipSd()

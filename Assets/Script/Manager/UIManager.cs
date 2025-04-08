@@ -4,11 +4,13 @@ using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Diagnostics;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     int _order = 10;
 
+    [SerializeField]
     Stack<UI_Popup> _popupStack = new Stack<UI_Popup>();
     public static UIManager instance;
 
@@ -37,15 +39,16 @@ public class UIManager : MonoBehaviour
     {
 
     }
-    public void SetCanvas(GameObject go, bool sort = true) // 기존 UI 오더를 채워주는 기능
+    public void SetCanvas(GameObject go, bool sort = true, int canvasLayer = 0) // 기존 UI 오더를 채워주는 기능
     {
-        Canvas canvas = go.GetComponent<Canvas>();
-        if(canvas == null)
-        {
-            go.AddComponent<Canvas>();
-            canvas = go.GetComponent<Canvas>();
-        }
 
+        if(go.GetComponent<GraphicRaycaster>() == null)
+            go.AddComponent<GraphicRaycaster>();
+        if (go.GetComponent<GraphicRaycaster>() == null)
+            go.AddComponent<Canvas>();
+
+
+        Canvas canvas = go.GetComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvas.overrideSorting = true;
         if (sort)
@@ -54,14 +57,23 @@ public class UIManager : MonoBehaviour
             _order++;
         }
         else
-            canvas.sortingOrder = 0;
+        {
+            if(canvasLayer == 0)
+                canvas.sortingOrder = 0;
+            else
+                canvas.sortingOrder = canvasLayer;
+        }
+         
     }
-    public GameObject ShowPopupUI(string name = null)
+    public GameObject ShowPopupUI(string name = null, Transform pivot = null)
     {
         GameObject prefab = Resources.Load<GameObject>($"Prefabs/UI/Popup/{name}");
         GameObject ui = Instantiate(prefab); 
         if (ui == null)
             return null;
+
+        if(pivot != null) { }
+
 
         UI_Popup popup = ui.GetComponent<UI_Popup>();
         _popupStack.Push(popup);

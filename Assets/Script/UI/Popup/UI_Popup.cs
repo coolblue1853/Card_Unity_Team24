@@ -8,7 +8,7 @@ public class UI_Popup : UI_Base
 {
     public override void Init()
     {
-        UIManager.instance.SetCanvas(gameObject, true);
+        UIManager.instance.SetCanvas(gameObject, true, canvasLayer);
     }
 
     public virtual void ClosePopUI()

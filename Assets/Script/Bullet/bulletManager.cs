@@ -22,11 +22,9 @@ public class bulletManager : MonoBehaviour
     IEnumerator Shoot()
     {
         yield return new WaitForSeconds(0.1f);
-        for(int i = 0; i < bullets.Length; i++)
-        {
-            bullets[i].SetActive(true);
-            pivot++;
-        }
+        bullets[pivot].SetActive(true);
+        pivot++;
+
         if(pivot == bullets.Length)
             pivot = 0;
 

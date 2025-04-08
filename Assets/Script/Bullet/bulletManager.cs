@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bulletManager : MonoBehaviour
+public class BulletManager : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public GameObject[] bullets;

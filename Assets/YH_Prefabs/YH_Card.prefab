@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 3454779661277197902}
   - component: {fileID: 468068483866862972}
   m_Layer: 0
-  m_Name: Card
+  m_Name: YH_Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

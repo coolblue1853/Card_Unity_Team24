@@ -10,22 +10,23 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        speed = Random.Range(4, 6);
+
     }
     void Update()
     {
         transform.Translate(direction * speed *  Time.deltaTime);
     }
 
-    public void Direction(Vector2 dir)
+    public void Direction(Vector2 dir , float spd)
     {
         direction = dir.normalized;
+        speed = spd;
         StartCoroutine(Disable());
     }
 
     IEnumerator Disable()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         gameObject.SetActive(false);
     }
 

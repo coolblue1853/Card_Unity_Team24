@@ -10,6 +10,8 @@ public class BulletManager : MonoBehaviour
     public Transform player;
 
     int pivot = 0;
+    float startTime;
+
      void Awake()
     {
         if (instance == null)
@@ -19,6 +21,7 @@ public class BulletManager : MonoBehaviour
     }
     void Start()
     {
+        startTime = Time.time;
         bullets = new GameObject[30];
         for(int i = 0; i < bullets.Length; i++)
         {
@@ -31,7 +34,11 @@ public class BulletManager : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        yield return new WaitForSeconds(0.5f);
+        float elapsed = Time.time - startTime;
+        float speed = Mathf.Clamp(3f + elapsed * 0.1f, 3f, 10f);
+        float cycle = Mathf.Lerp(1.5f, 0.2f, elapsed / 30f);
+
+        yield return new WaitForSeconds(cycle);
         bullets[pivot].SetActive(true);
 
         Vector2 spawn = GetRandomPosition();
@@ -50,7 +57,7 @@ public class BulletManager : MonoBehaviour
             direction = (targetPos - spawn).normalized;
         }
 
-        bullets[pivot].GetComponent<Bullet>().Direction(direction);
+        bullets[pivot].GetComponent<Bullet>().Direction(direction, speed);
 
         Vector2 GetRandomPosition()
         {

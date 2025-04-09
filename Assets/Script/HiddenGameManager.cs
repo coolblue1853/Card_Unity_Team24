@@ -18,12 +18,6 @@ public class HiddenGameManager : MonoBehaviour
     }
     float feverTime = 0;
   
-
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         feverTime += Time.deltaTime;

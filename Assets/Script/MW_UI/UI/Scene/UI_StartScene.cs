@@ -23,20 +23,20 @@ public class UI_StartScene : UI_Scene
         Bind<Button>(typeof(Buttons));
         Bind<Text>(typeof(Texts));
 
-        Get<Button>((int)Buttons.NomalModeButton).onClick.AddListener(OnNomalButtonClick);
-        Get<Button>((int)Buttons.HardModeButton).onClick.AddListener(OnHardButtonClick);
+        Get<Button>((int)Buttons.NomalModeButton).onClick.AddListener(EazyModeStart);
+        Get<Button>((int)Buttons.HardModeButton).onClick.AddListener(HardModeStart);
         Get<Button>((int)Buttons.QuitButton).onClick.AddListener(OnQuitButtonClick);
 
     }
 
-    protected void OnNomalButtonClick()
+    protected void EazyModeStart()
     {
         SceneManager.LoadScene("Game");
     }
-    protected void OnHardButtonClick()
+    public void HardModeStart()
     {
         SceneManager.LoadScene("Game");
-
+        CreateCard.GameMode = 1;
     }
     protected void OnQuitButtonClick()
     {

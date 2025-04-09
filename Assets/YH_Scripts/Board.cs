@@ -19,8 +19,12 @@ public class Board : MonoBehaviour
 
         StartCoroutine(SetCard(arr));
 
-        GameManager.Instance.cardCount = arr.Length;
+        YHGameManager.Instance.cardCount = arr.Length;
     }
+
+
+
+
     IEnumerator SetCard(int[] Array)
     {
         for (i = 0; i < 16; i++)

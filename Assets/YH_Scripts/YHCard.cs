@@ -7,24 +7,24 @@ public class YHCard : MonoBehaviour
 {
     public int idx = 0;
 
-    public GameObject front;
-    public GameObject back;
+   // public GameObject front;
+    //public GameObject back;
 
-    public Animator anim;
+   // public Animator anim;
 
-    AudioSource audioSource;
-    public AudioClip clip;
+//    AudioSource audioSource;
+//    public AudioClip clip;
 
     float x;
     float y;
 
     bool canclick = true;
-    public SpriteRenderer frontImage;
+ //   public SpriteRenderer frontImage;
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+     //   audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -38,17 +38,16 @@ public class YHCard : MonoBehaviour
     public void Setting(int number)
     {
         idx = number;
-        frontImage.sprite = Resources.Load<Sprite>($"rtan{idx}");
+     //   frontImage.sprite = Resources.Load<Sprite>($"rtan{idx}");
     }
-
+ 
+    /*
     public void OpenCard()
     {
         if (YHGameManager.Instance.Two_card_Open == false)
         {
             if (canclick)
             {
-                canclick = false;
-                audioSource.PlayOneShot(clip);
                 anim.SetBool("IsOpen", true);
                 anim.SetBool("Idlemode", false);
 
@@ -64,10 +63,14 @@ public class YHCard : MonoBehaviour
             }
         }
     }
+    */
+
     public void CardMove(int card_number)
     {
-        x = (card_number % 4) * 1.4f - 2.1f;
-        y = (card_number / 4) * 1.4f - 3.0f;
+       // float x = (j % 5) + (j * 0.1f) - 2.2f;
+        //float y = i * 1.25f - 4.2f;
+        x = (card_number % 5) * 1.1f - 2.324f;
+        y = (card_number / 5) * 1.2f -0.542f;
     }
 
     public void DestroyCard()
@@ -79,19 +82,6 @@ public class YHCard : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    public void CloseCard()
-    {
-        Invoke("CloseCardInvoke", 1.0f);
-        canclick = true;
-    }
+   
 
-    void CloseCardInvoke()
-    {
-        anim.SetBool("IsOpen", false);
-    }
-
-    public void Idlemode()
-    {
-        anim.SetBool("Idlemode", true);
-    }
 }

@@ -40,7 +40,6 @@ public class YHGameManager : MonoBehaviour
     void Start()
     {
         Invoke("ReadyAnimInvoke", 4.5f);
-
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
     }
@@ -68,6 +67,7 @@ public class YHGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (time_on)
         {
             time -= Time.deltaTime;
@@ -80,6 +80,7 @@ public class YHGameManager : MonoBehaviour
             Time.timeScale = 0.0f;
             endTxt.SetActive(true);
         }
+        */
     }
     public void ClipInvoke()
     {
@@ -102,17 +103,12 @@ public class YHGameManager : MonoBehaviour
         }
         else
         {
-            firstCard.CloseCard();
-            secondCard.CloseCard();
+           // firstCard.CloseCard();
+         //   secondCard.CloseCard();
         }
 
         Invoke("Card_null_Invoke", 1.0f);       
     }
 
-    void Card_null_Invoke()
-    {
-        firstCard = null;
-        secondCard = null;
-        Two_card_Open = false;
-    }
+
 }

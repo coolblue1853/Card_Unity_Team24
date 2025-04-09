@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CreateCard : MonoBehaviour
@@ -26,21 +27,8 @@ public class CreateCard : MonoBehaviour
         int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4 };
         Shuffle(arr);
 
-        int idx = 0;
+        StartCoroutine(SetCard(arr));
 
-        for (int i = 0; i < 2; ++i)
-        {
-            for (int j = 0; j < 5; ++j)
-            {
-                GameObject go = Instantiate(cardPrefab, this.transform);
-
-                float x = (j % 5) + (j * 0.1f) - 2.2f;
-                float y = i * 1.5f - 3.575f;
-
-                go.transform.position = new Vector2(x, y);
-                go.GetComponent<Card>().Setting(arr[idx++]);
-            }
-        }
     }
 
     public void HardMode()
@@ -65,7 +53,19 @@ public class CreateCard : MonoBehaviour
             }
         }
     }
+    IEnumerator SetCard(int[] Array)
+    {
+        int idx = 0;
+        for (int i = 0; i < Array.Length; i++)
+        {
+            GameObject go = Instantiate(cardPrefab, this.transform);
 
+            go.GetComponent<YHCard>().CardMove(i);
+            go.GetComponent<YHCard>().Setting(Array[i]);
+            go.GetComponent<Card>().Setting(Array[idx++]);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
     void Start()
     {
         if (GameMode == 0)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class Score : MonoBehaviour
@@ -11,6 +12,8 @@ public class Score : MonoBehaviour
 
     private void Awake()
     {
+        scoreText.text = "";
+        score = 0;
         instance = this;
         UpdateText();
     }

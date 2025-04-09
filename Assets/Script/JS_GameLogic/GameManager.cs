@@ -19,11 +19,7 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public Text score;
 
-    public Image img0;  public Text name0;
-    public Image img1;  public Text name1;
-    public Image img2;  public Text name2;
-    public Image img3;  public Text name3;
-    public Image img4;  public Text name4;
+    public GameObject endGamePanel;
 
     public int cardCount = 0; // 남은 카드
 
@@ -53,17 +49,7 @@ public class GameManager : MonoBehaviour
         scoreText.gameObject.SetActive(false);
         score.gameObject.SetActive(false);
 
-        img0.gameObject.SetActive(true);
-        img1.gameObject.SetActive(true);
-        img2.gameObject.SetActive(true);
-        img3.gameObject.SetActive(true);
-        img4.gameObject.SetActive(true);
-
-        name0.gameObject.SetActive(true);
-        name1.gameObject.SetActive(true);
-        name2.gameObject.SetActive(true);
-        name3.gameObject.SetActive(true);
-        name4.gameObject.SetActive(true);
+        endGamePanel.SetActive(true);
 
         isGameEnded = true;
         Time.timeScale = 0.0f;
@@ -97,6 +83,10 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public void OnGoMainButtonClicked()
+    {
+        SceneManager.LoadScene("Start");
+    }
 
     //public void Matched()
     //{
@@ -125,10 +115,7 @@ public class GameManager : MonoBehaviour
 
         if (firstCard.idx == secondCard.idx)
         {
-            firstCard.DestroyCard();
-            secondCard.DestroyCard();
-            Score.PlusScore((int)Timer.time);
-            cardCount -= 2;
+            Invoke("Destroyd_Invoke", 0.5f);
         }
         else
         {
@@ -136,12 +123,25 @@ public class GameManager : MonoBehaviour
             secondCard.CloseCard();
         }
 
+        // 클릭 활성화
+
+        Invoke("Card_null_Invoke", 1.0f);
+
+    }
+    void Destroyd_Invoke()
+    {
+        firstCard.DestroyCard();
+        secondCard.DestroyCard();
+        Score.PlusScore((int)Timer.time);
+        cardCount -= 2;
+    }
+    void Card_null_Invoke()
+    {
         firstCard.isFlipped = false;
         secondCard.isFlipped = false;
         firstCard = null;
         secondCard = null;
-
-        // 클릭 활성화
         inputBlocked = false;
+        //Two_card_Open = false;
     }
 }

@@ -319,6 +319,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasLayer: 0
+--- !u!1 &200933376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 200933378}
+  - component: {fileID: 200933377}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &200933377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200933376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5dc1ed5345b00c4faa5e86f2bfed5a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverText: {fileID: 0}
+  firstCard: {fileID: 0}
+  secondCard: {fileID: 0}
+  timerText: {fileID: 0}
+  timer: {fileID: 0}
+  scoreText: {fileID: 0}
+  score: {fileID: 0}
+  endGamePanel: {fileID: 0}
+  cardCount: 0
+  isGameEnded: 0
+  inputBlocked: 0
+--- !u!4 &200933378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200933376}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 622.55414, y: 778.3091, z: 3.6637871}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &347334059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,7 +1701,7 @@ GameObject:
   - component: {fileID: 1944584603}
   - component: {fileID: 1944584604}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: _SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2076,7 +2131,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 2031801948}
-  - {fileID: 1203531010}
   - {fileID: 1944584603}
+  - {fileID: 1203531010}
+  - {fileID: 200933378}
   - {fileID: 348153236}
   - {fileID: 738156175}

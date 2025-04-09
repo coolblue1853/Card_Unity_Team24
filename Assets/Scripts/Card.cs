@@ -8,6 +8,8 @@ public class Card : MonoBehaviour
     private GameObject front;
     private GameObject back;
 
+    private SpriteRenderer sp;
+
     public bool isFlipped = false;
 
     public int idx;
@@ -16,6 +18,8 @@ public class Card : MonoBehaviour
     {
         front = transform.Find("Front").gameObject;
         back = transform.Find("Back").gameObject;
+
+        sp = front.GetComponent<SpriteRenderer>();
 
         front.SetActive(false);
         back.SetActive(true);
@@ -48,14 +52,28 @@ public class Card : MonoBehaviour
     public void Setting(int number)
     {
         idx = number;
+        sp.sprite = Resources.Load<Sprite>($"{idx}");
     }
 
     public void DestroyCard()
     {
         Destroy(gameObject);
+        //Invoke("DestroyCardInvoke", 1.0f);
+    }
+
+    void DestroyCardInvoke()
+    {
+        Destroy(gameObject);
     }
 
     public void CloseCard()
+    {
+        front.SetActive(false);
+        back.SetActive(true);
+        //Invoke("CloseCardInvoke", 1.0f);
+    }
+
+    void CloseCardInvoke()
     {
         front.SetActive(false);
         back.SetActive(true);

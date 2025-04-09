@@ -22,6 +22,7 @@ public class CreateCard : MonoBehaviour
 
     public void EazyMode()
     {
+        GameManager.Instance.cardCount = 10;
         int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4 };
         Shuffle(arr);
 
@@ -44,6 +45,7 @@ public class CreateCard : MonoBehaviour
 
     public void HardMode()
     {
+        GameManager.Instance.cardCount = 20;
         int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };
         Shuffle(arr);
 
@@ -74,7 +76,5 @@ public class CreateCard : MonoBehaviour
         {
             HardMode();
         }
-
-        //GameManager.Instance.CardCount = arr.Length;
     }
 }

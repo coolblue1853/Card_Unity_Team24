@@ -9,15 +9,23 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public GameObject TeamsFaces;
     public GameObject gameOverText;
 
     public Card firstCard;
     public Card secondCard;
 
-    public int cardCount = 1; // 남은 카드
+    public Text timerText;
+    public Text timer;
+    public Text scoreText;
+    public Text score;
 
-    //bool flipCount = false; // 뒤집어 놓은 카드가 있냐 없냐
+    public Image img0;  public Text name0;
+    public Image img1;  public Text name1;
+    public Image img2;  public Text name2;
+    public Image img3;  public Text name3;
+    public Image img4;  public Text name4;
+
+    public int cardCount = 0; // 남은 카드
 
     public bool isGameEnded = false;
 
@@ -31,23 +39,30 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        gameOverText.SetActive(false);
         isGameEnded = false;
         Time.timeScale = 1.0f;
     }
 
     public void GameClear()
     {
-        int[] arr = { 0, 1, 2, 3, 4 };
+        //클리어하면 팀원 사진5개 + 소개
+        timerText.gameObject.SetActive(false);
+        timer.gameObject.SetActive(false);
+        scoreText.gameObject.SetActive(false);
+        score.gameObject.SetActive(false);
 
-        for (int i = 0; i < 5; ++i)
-        {
-            GameObject go = Instantiate(TeamsFaces, this.transform);
+        img0.gameObject.SetActive(true);
+        img1.gameObject.SetActive(true);
+        img2.gameObject.SetActive(true);
+        img3.gameObject.SetActive(true);
+        img4.gameObject.SetActive(true);
 
-            float x = (i % 5) + (i * 0.1f) - 2.2f;
-
-            go.transform.position = new Vector2(x, 0);
-            //go.GetComponent<FinishCard>().Setting(arr[i]); 이거 하면 오류걸림(이미지넣기)
-        }
+        name0.gameObject.SetActive(true);
+        name1.gameObject.SetActive(true);
+        name2.gameObject.SetActive(true);
+        name3.gameObject.SetActive(true);
+        name4.gameObject.SetActive(true);
 
         isGameEnded = true;
         Time.timeScale = 0.0f;
@@ -84,10 +99,12 @@ public class GameManager : MonoBehaviour
 
     public void Matched()
     {
-        if (firstCard.idx == secondCard.idx) // 이 부분이 더블클릭시 오류.
+        if (firstCard.idx == secondCard.idx) // 이 부분이 더블클릭시 오류(인보크 이용할경우).
         {
             firstCard.DestroyCard();
             secondCard.DestroyCard();
+            Score.PlusScore((int)Timer.time);
+            cardCount -= 2;
         }
         else
         {

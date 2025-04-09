@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
 {
     public Text timer;
 
-    float time = 1.00f;
+    public static float time = 200.00f;
 
     private void Update()
     {

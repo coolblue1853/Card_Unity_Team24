@@ -27,6 +27,8 @@ public class Card : MonoBehaviour
 
     public void Flip()
     {
+        if (GameManager.Instance.inputBlocked) return;
+
         isFlipped = !isFlipped;
         front.SetActive(isFlipped);
         back.SetActive(!isFlipped);
@@ -44,7 +46,13 @@ public class Card : MonoBehaviour
             else
             {
                 GameManager.Instance.secondCard = this;
-                GameManager.Instance.Matched();
+
+                // 클릭 비활성화
+                GameManager.Instance.inputBlocked = true;
+
+                //GameManager.Instance.Matched(); (오류나는거)
+
+                GameManager.Instance.StartCoroutine(GameManager.Instance.MatchedCoroutine());
             }
         }
     }
@@ -58,22 +66,9 @@ public class Card : MonoBehaviour
     public void DestroyCard()
     {
         Destroy(gameObject);
-        //Invoke("DestroyCardInvoke", 1.0f);
-    }
-
-    void DestroyCardInvoke()
-    {
-        Destroy(gameObject);
     }
 
     public void CloseCard()
-    {
-        front.SetActive(false);
-        back.SetActive(true);
-        //Invoke("CloseCardInvoke", 1.0f);
-    }
-
-    void CloseCardInvoke()
     {
         front.SetActive(false);
         back.SetActive(true);

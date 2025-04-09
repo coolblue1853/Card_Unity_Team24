@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public int cardCount = 0; // 남은 카드
 
     public bool isGameEnded = false;
+    public bool inputBlocked = false;
 
     private void Awake()
     {
@@ -97,9 +98,32 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Matched()
+    //public void Matched()
+    //{
+    //    if (firstCard.idx == secondCard.idx) // 이 부분이 더블클릭시 오류(인보크 이용할경우).
+    //    {
+    //        firstCard.DestroyCard();
+    //        secondCard.DestroyCard();
+    //        Score.PlusScore((int)Timer.time);
+    //        cardCount -= 2;
+    //    }
+    //    else
+    //    {
+    //        firstCard.CloseCard();
+    //        secondCard.CloseCard();
+    //    }
+
+    //    firstCard.isFlipped = false;
+    //    secondCard.isFlipped = false;
+    //    firstCard = null;
+    //    secondCard = null;
+    //}
+
+    public IEnumerator MatchedCoroutine()
     {
-        if (firstCard.idx == secondCard.idx) // 이 부분이 더블클릭시 오류(인보크 이용할경우).
+        yield return new WaitForSeconds(0.5f); // 0.5초 딜레이
+
+        if (firstCard.idx == secondCard.idx)
         {
             firstCard.DestroyCard();
             secondCard.DestroyCard();
@@ -116,5 +140,8 @@ public class GameManager : MonoBehaviour
         secondCard.isFlipped = false;
         firstCard = null;
         secondCard = null;
+
+        // 클릭 활성화
+        inputBlocked = false;
     }
 }

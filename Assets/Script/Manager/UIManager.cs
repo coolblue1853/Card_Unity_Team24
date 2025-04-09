@@ -67,6 +67,8 @@ public class UIManager : MonoBehaviour
     }
     public GameObject ShowPopupUI(string name = null)
     {
+        Time.timeScale = 0f;
+
         GameObject prefab = Resources.Load<GameObject>($"Prefabs/UI/Popup/{name}");
         GameObject ui = Instantiate(prefab);
         if (ui == null)
@@ -101,6 +103,8 @@ public class UIManager : MonoBehaviour
         popup = null;
 
         _order--;
+
+        Time.timeScale = 1.0f;
     }
 
 

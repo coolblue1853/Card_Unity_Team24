@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
+    public static BulletManager instance;
     public GameObject bulletPrefab;
     public GameObject[] bullets;
     public Transform player;
 
     int pivot = 0;
+     void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
     void Start()
     {
         bullets = new GameObject[30];
@@ -77,5 +85,16 @@ public class BulletManager : MonoBehaviour
             pivot = 0;
 
         StartCoroutine(Shoot());
+    }
+
+    public void DisableAllBullets(GameObject exception)
+    {
+        for (int i = 0; i < bullets.Length; i++)
+        {
+            if (bullets[i] != exception)
+            {
+                bullets[i].SetActive(false);
+            }
+        }
     }
 }

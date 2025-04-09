@@ -15,10 +15,6 @@ public class HiddenGameManager : MonoBehaviour
         {
             Instance = this;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
     float feverTime = 0;
   

@@ -208,7 +208,6 @@ GameObject:
   - component: {fileID: 145129411}
   - component: {fileID: 145129413}
   - component: {fileID: 145129412}
-  - component: {fileID: 145129414}
   m_Layer: 5
   m_Name: BackgroundFeverTimeScore
   m_TagString: Untagged
@@ -277,19 +276,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145129410}
   m_CullTransparentMesh: 1
---- !u!114 &145129414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 145129410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2484d750bef0f049b9a3a8c29d942fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  feverTimeScoretxt: {fileID: 145129412}
 --- !u!1 &529057990
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,7 +654,6 @@ GameObject:
   - component: {fileID: 1036800287}
   - component: {fileID: 1036800289}
   - component: {fileID: 1036800288}
-  - component: {fileID: 1036800290}
   m_Layer: 5
   m_Name: FeverTimeScore
   m_TagString: Untagged
@@ -738,19 +723,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036800286}
   m_CullTransparentMesh: 1
---- !u!114 &1036800290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036800286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2484d750bef0f049b9a3a8c29d942fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  feverTimeScoretxt: {fileID: 1036800288}
 --- !u!1 &1187644919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,6 +979,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2050747020}
+  - component: {fileID: 2050747021}
   m_Layer: 0
   m_Name: HiddenGameManager
   m_TagString: Untagged
@@ -1029,6 +1002,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2050747021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050747019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2484d750bef0f049b9a3a8c29d942fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feverTimeScoretxt: {fileID: 1036800288}
+  backgroundScoretxt: {fileID: 145129412}
 --- !u!1 &2086266439
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,6 +33,7 @@ public class Bullet : MonoBehaviour
     {
         if(collider.gameObject.CompareTag("Player"))
         {
+            BulletManager.instance.DisableAllBullets(this.gameObject);
             HiddenGameManager.Instance.GameEnd();
         }
         

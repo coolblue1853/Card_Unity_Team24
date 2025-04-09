@@ -27,9 +27,9 @@ public class Board : MonoBehaviour
         {
             go = Instantiate(card, this.transform);
 
-            go.GetComponent<Card>().CardMove(i);
+            go.GetComponent<YHCard>().CardMove(i);
             
-            go.GetComponent<Card>().Setting(Array[i]);
+            go.GetComponent<YHCard>().Setting(Array[i]);
             yield return new WaitForSeconds(0.2f);
         }
     }

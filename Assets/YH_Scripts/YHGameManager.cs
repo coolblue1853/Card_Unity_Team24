@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class GameManager : MonoBehaviour
+public class YHGameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static YHGameManager Instance;
 
-    public Card firstCard;
-    public Card secondCard;
+    public YHCard firstCard;
+    public YHCard secondCard;
 
     public Text timeTxt;
     public GameObject endTxt;

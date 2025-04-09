@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class Card : MonoBehaviour
+public class YHCard : MonoBehaviour
 {
     public int idx = 0;
 
@@ -43,7 +43,7 @@ public class Card : MonoBehaviour
 
     public void OpenCard()
     {
-        if (GameManager.Instance.Two_card_Open == false)
+        if (YHGameManager.Instance.Two_card_Open == false)
         {
             if (canclick)
             {
@@ -52,14 +52,14 @@ public class Card : MonoBehaviour
                 anim.SetBool("IsOpen", true);
                 anim.SetBool("Idlemode", false);
 
-                if (GameManager.Instance.firstCard == null)
+                if (YHGameManager.Instance.firstCard == null)
                 {
-                    GameManager.Instance.firstCard = this;
+                    YHGameManager.Instance.firstCard = this;
                 }
                 else
                 {
-                    GameManager.Instance.secondCard = this;
-                    GameManager.Instance.Matched();
+                    YHGameManager.Instance.secondCard = this;
+                    YHGameManager.Instance.Matched();
                 }
             }
         }

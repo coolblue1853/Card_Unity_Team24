@@ -8,6 +8,5 @@ public class EazyMode : MonoBehaviour
     public void EazyModeStart()
     {
         SceneManager.LoadScene("Game");
-        CreateCard.GameMode = 0;
     }
 }

@@ -5,8 +5,23 @@ using UnityEngine.UI;
 
 public class HiddenGameManager : MonoBehaviour
 {
-    float feverTime = 0;
+    public static HiddenGameManager Instance;
     public Text feverTimeScoretxt;
+    public Text backgroundScoretxt;
+
+    void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    float feverTime = 0;
+  
 
     void Start()
     {
@@ -17,5 +32,12 @@ public class HiddenGameManager : MonoBehaviour
     {
         feverTime += Time.deltaTime;
         feverTimeScoretxt.text = ((int)feverTime).ToString();
+        backgroundScoretxt.text = ((int)feverTime).ToString();
+    }
+
+    public void GameEnd()
+    {
+        Time.timeScale = 0;
+
     }
 }

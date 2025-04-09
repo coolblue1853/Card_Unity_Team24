@@ -28,4 +28,14 @@ public class Bullet : MonoBehaviour
         yield return new WaitForSeconds(3f);
         gameObject.SetActive(false);
     }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.CompareTag("Player"))
+        {
+            HiddenGameManager.Instance.GameEnd();
+        }
+        
+    }
+
 }

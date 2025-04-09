@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FlipSound: {fileID: 8300000, guid: 24eeba8e73fc8084084dd93cbd1653e9, type: 3}
-  MatchSound: {fileID: 8300000, guid: c13c5b76fb7a82f468f4280553b83275, type: 3}
-  FailSound: {fileID: 8300000, guid: 6eeb4e4f9a03e93438c17eeeaa659efd, type: 3}
+  MatchSound: {fileID: 8300000, guid: 51dbc123665ea6142a6bb6dda8c66a4a, type: 3}
+  FailSound: {fileID: 8300000, guid: 71480b0be35266e4790ee0238782308d, type: 3}
 --- !u!1 &5804331479311711703
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a57a21d8da44ed4b99bbf13103b230e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainBgm: {fileID: 8300000, guid: b332ca03e0c579c4f952fc0d1f9cf34d, type: 3}
-  GameBgm: {fileID: 8300000, guid: b332ca03e0c579c4f952fc0d1f9cf34d, type: 3}
-  FeverBgm: {fileID: 8300000, guid: 986ceecf11ffd0e4a8676b4ccfaaaedc, type: 3}
-  WarningSound: {fileID: 8300000, guid: cabfae866cab347928b74b7d0ca6bfa9, type: 3}
+  MainBgm: {fileID: 8300000, guid: e06a27b80f95d9041af6c17c83c08f38, type: 3}
+  GameBgm: {fileID: 8300000, guid: 75c21c7d77971914ebc76e0884949d4b, type: 3}
+  FeverBgm: {fileID: 8300000, guid: e91541d4a48330e408b2ddeea63f105b, type: 3}
+  WarningSound: {fileID: 8300000, guid: bfd62332f6292c1448bb653d789eafe3, type: 3}

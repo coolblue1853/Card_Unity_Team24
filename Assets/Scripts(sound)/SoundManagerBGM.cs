@@ -53,7 +53,11 @@ public class SoundManagerBGM : MonoBehaviour
         time -= Time.deltaTime;
         if (currentScene == "Game")
         {
-            if (time <= 7.0f && time>0)
+            if(audiosource.clip == this.FeverBgm)
+            {
+                time = 0;
+            }
+            else if (time <= 6.3f && time>0)
             {
                 if(!Iswarningplay)
                 {
@@ -61,7 +65,7 @@ public class SoundManagerBGM : MonoBehaviour
                     Iswarningplay = true;
                     playtime = time;
                 }
-                if(playtime-time>=0.8f)
+                if(playtime-time>=0.9f)
                 {
                     Iswarningplay = false;
                 }

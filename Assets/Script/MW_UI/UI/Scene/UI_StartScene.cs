@@ -31,15 +31,19 @@ public class UI_StartScene : UI_Scene
 
     protected void EazyModeStart()
     {
+        SoundManagerSFX.Instance.ClickSd();
         SceneManager.LoadScene("Game");
+        CreateCard.GameMode = 0;
     }
     public void HardModeStart()
     {
+        SoundManagerSFX.Instance.ClickSd();
         SceneManager.LoadScene("Game");
         CreateCard.GameMode = 1;
     }
     protected void OnQuitButtonClick()
     {
+        SoundManagerSFX.Instance.ClickSd();
         Application.Quit();
     }
 }

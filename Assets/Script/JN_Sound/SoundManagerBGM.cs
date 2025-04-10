@@ -31,6 +31,11 @@ public class SoundManagerBGM : MonoBehaviour
             Instance = this;
         }
     }
+    public bool isHidden = false;
+    private void OnEnable()
+    {
+        isHidden = false;
+    }
 
     void Start()
     {
@@ -48,36 +53,44 @@ public class SoundManagerBGM : MonoBehaviour
             audiosource.Play();
         }
     }
+
     void Update()
     {
-        time -= Time.deltaTime;
+
         if (currentScene == "Game")
         {
             if(audiosource.clip == this.FeverBgm)
             {
-                time = 0;
+                isHidden = true;
             }
-            else if (time <= 6.3f && time>0)
+            else if (Timer.time <= 15f && time>0)
             {
                 if(!Iswarningplay)
                 {
                     audiosource.PlayOneShot(WarningSound);
                     Iswarningplay = true;
-                    playtime = time;
+                    playtime = Timer.time;
                 }
-                if(playtime-time>=0.9f)
+                if(playtime- Timer.time >= 0.9f)
                 {
                     Iswarningplay = false;
                 }
             }
-            else if(time <=0)
+            else if(Timer.time <= 0)
             {
                 audiosource.Stop();
             }
         }
+        else if (currentScene == "Game"&& (audiosource.isPlaying == false || audiosource.clip != GameBgm || isHidden == false))
+        {
+            audiosource.clip = this.GameBgm;
+            audiosource.Play();
+        }
+
     }
     public void FevertimeBgm()
     {
+        isHidden = true;
         audiosource.clip = this.FeverBgm;
         audiosource.Play();
     }

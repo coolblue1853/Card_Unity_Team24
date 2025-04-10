@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     public void StartHiddenGame()
     {
+        SoundManagerBGM.Instance.FevertimeBgm();
         timerText.gameObject.SetActive(false);
         timer.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
@@ -133,10 +134,12 @@ public class GameManager : MonoBehaviour
 
         if (firstCard.idx == secondCard.idx)
         {
+            SoundManagerSFX.Instance.MatchSd();
             Invoke("Destroyd_Invoke", 0.5f);
         }
         else
         {
+            SoundManagerSFX.Instance.FailSd();
             firstCard.CloseCard();
             secondCard.CloseCard();
         }

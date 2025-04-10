@@ -35,7 +35,7 @@ public class Card : MonoBehaviour
         isFlipped = !isFlipped;
         // front.SetActive(isFlipped);
         //   back.SetActive(!isFlipped);
-
+        SoundManagerSFX.Instance.FlipSd();
         anim.SetBool("IsOpen", true);
         anim.SetBool("Idlemode", false);
         collider2D.enabled = false;

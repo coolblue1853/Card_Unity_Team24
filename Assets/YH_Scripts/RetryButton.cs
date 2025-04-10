@@ -14,13 +14,9 @@ public class RetryButton : MonoBehaviour
     public GameObject Rtan_Image2;
     public GameObject Rtan_Image3;
     public GameObject Rtan_Image4;
-    public GameObject Rtan_Image5;
-    public GameObject Rtan_Image6;
-    public GameObject Rtan_Image7;
-
     public GameObject Interaction_Buttons;
 
-    int Image_State = 10;
+    int Image_State = 0;
 
     public void Retry()
     {
@@ -38,25 +34,31 @@ public class RetryButton : MonoBehaviour
 
     public void Add_Imagenumber()
     {
-        if (Image_State < 7)
+        if (Image_State < 5)
         {
+            SoundManagerSFX.Instance.ClickSd();
             Image_State++;
-        }  
+            Show_Image();
+        }
+
     }
 
     public void Subtraction_Imagenumber()
     {
         if (Image_State > 0)
         {
+            SoundManagerSFX.Instance.ClickSd();
             Image_State--;
-        } 
+            Show_Image();
+        }
+
     }
     public void X_Button()
     {
         Show_Button.SetActive(true);
         Start_Button.SetActive(true);
 
-        Image_State = 10;
+        Image_State = 0;
         Interaction_Buttons.SetActive(false);
     }
 
@@ -69,9 +71,6 @@ public class RetryButton : MonoBehaviour
             Rtan_Image2.SetActive(false);
             Rtan_Image3.SetActive(false);
             Rtan_Image4.SetActive(false);
-            Rtan_Image5.SetActive(false);
-            Rtan_Image6.SetActive(false);
-            Rtan_Image7.SetActive(false);
         }
 
         if (Image_State == 1)
@@ -81,9 +80,6 @@ public class RetryButton : MonoBehaviour
             Rtan_Image2.SetActive(false);
             Rtan_Image3.SetActive(false);
             Rtan_Image4.SetActive(false);
-            Rtan_Image5.SetActive(false);
-            Rtan_Image6.SetActive(false);
-            Rtan_Image7.SetActive(false);
         }
 
         if (Image_State == 2)
@@ -93,9 +89,6 @@ public class RetryButton : MonoBehaviour
             Rtan_Image2.SetActive(true);
             Rtan_Image3.SetActive(false);
             Rtan_Image4.SetActive(false);
-            Rtan_Image5.SetActive(false);
-            Rtan_Image6.SetActive(false);
-            Rtan_Image7.SetActive(false);
         }
 
         if (Image_State == 3)
@@ -105,9 +98,6 @@ public class RetryButton : MonoBehaviour
             Rtan_Image2.SetActive(false);
             Rtan_Image3.SetActive(true);
             Rtan_Image4.SetActive(false);
-            Rtan_Image5.SetActive(false);
-            Rtan_Image6.SetActive(false);
-            Rtan_Image7.SetActive(false);
         }
 
         if (Image_State == 4)
@@ -117,62 +107,12 @@ public class RetryButton : MonoBehaviour
             Rtan_Image2.SetActive(false);
             Rtan_Image3.SetActive(false);
             Rtan_Image4.SetActive(true);
-            Rtan_Image5.SetActive(false);
-            Rtan_Image6.SetActive(false);
-            Rtan_Image7.SetActive(false);
         }
 
-        if (Image_State == 5)
-        {
-            Rtan_Image0.SetActive(false);
-            Rtan_Image1.SetActive(false);
-            Rtan_Image2.SetActive(false);
-            Rtan_Image3.SetActive(false);
-            Rtan_Image4.SetActive(false);
-            Rtan_Image5.SetActive(true);
-            Rtan_Image6.SetActive(false);
-            Rtan_Image7.SetActive(false);
-        }
-
-        if (Image_State == 6)
-        {
-            Rtan_Image0.SetActive(false);
-            Rtan_Image1.SetActive(false);
-            Rtan_Image2.SetActive(false);
-            Rtan_Image3.SetActive(false);
-            Rtan_Image4.SetActive(false);
-            Rtan_Image5.SetActive(false);
-            Rtan_Image6.SetActive(true);
-            Rtan_Image7.SetActive(false);
-        }
-
-        if (Image_State == 7)
-        {
-            Rtan_Image0.SetActive(false);
-            Rtan_Image1.SetActive(false);
-            Rtan_Image2.SetActive(false);
-            Rtan_Image3.SetActive(false);
-            Rtan_Image4.SetActive(false);
-            Rtan_Image5.SetActive(false);
-            Rtan_Image6.SetActive(false);
-            Rtan_Image7.SetActive(true);
-        }
-
-        if (Image_State == 10)
-        {
-            Rtan_Image0.SetActive(false);
-            Rtan_Image1.SetActive(false);
-            Rtan_Image2.SetActive(false);
-            Rtan_Image3.SetActive(false);
-            Rtan_Image4.SetActive(false);
-            Rtan_Image5.SetActive(false);
-            Rtan_Image6.SetActive(false);
-            Rtan_Image7.SetActive(false);
-        }
     }
 
     void Update()
     {
-        Show_Image();
+      //  Show_Image();
     }
 }

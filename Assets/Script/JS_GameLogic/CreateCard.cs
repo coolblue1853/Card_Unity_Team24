@@ -28,7 +28,7 @@ public class CreateCard : MonoBehaviour
 
         GameManager.Instance.cardCount = 10;
         int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4 };
-        Shuffle(arr);
+        arr = arr.OrderBy(x => Random.Range(0f, 5f)).ToArray();
 
         StartCoroutine(SetCard(arr, GameMode));
 
@@ -37,11 +37,11 @@ public class CreateCard : MonoBehaviour
     public void HardMode()
     {
         Timer.time = 100;
-        Score.standardScore = 300;
+        Score.standardScore = 550;
 
         GameManager.Instance.cardCount = 20;
         int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };
-        Shuffle(arr);
+        arr = arr.OrderBy(x => Random.Range(0f, 10f)).ToArray();
 
         StartCoroutine(SetCard(arr, GameMode));
     }

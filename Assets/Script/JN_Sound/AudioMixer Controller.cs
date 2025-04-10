@@ -31,21 +31,21 @@ public class AudioMixerController : MonoBehaviour
 
     public void SetMasterVolume(float value)
     {
-        m_AudioMixer.SetFloat("Master", Mathf.Log10(value) * 20);
+        m_AudioMixer.SetFloat("Master", Mathf.Approximately(value, 0f) ? -80f : Mathf.Log10(value) * 20f);
         PlayerPrefs.SetFloat("MasterVolume", value);
         PlayerPrefs.Save();
     }
 
     public void SetBGMVolume(float value)
     {
-        m_AudioMixer.SetFloat("BGM", Mathf.Log10(value) * 20);
+        m_AudioMixer.SetFloat("BGM", Mathf.Approximately(value, 0f) ? -80f : Mathf.Log10(value) * 20f);
         PlayerPrefs.SetFloat("BGMVolume", value);
         PlayerPrefs.Save();
     }
 
     public void SetSFXVolume(float value)
     {
-        m_AudioMixer.SetFloat("SFX", Mathf.Log10(value) * 20);
+        m_AudioMixer.SetFloat("SFX", Mathf.Approximately(value, 0f) ? -80f : Mathf.Log10(value) * 20f);
         PlayerPrefs.SetFloat("SFXVolume", value);
         PlayerPrefs.Save();
     }

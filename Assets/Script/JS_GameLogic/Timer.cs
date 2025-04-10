@@ -9,6 +9,11 @@ public class Timer : MonoBehaviour
     public Text timer;
 
     public static float time = 50.00f;
+    public bool isCheck = false;
+    private void OnEnable()
+    {
+        isCheck = false;
+    }
 
     private void Update()
     {
@@ -20,8 +25,9 @@ public class Timer : MonoBehaviour
             time -= Time.deltaTime;
             timer.text = time.ToString("N2");
 
-            if (GameManager.Instance.cardCount <= 0)
+            if (GameManager.Instance.cardCount <= 0 && isCheck == false)
             {
+                isCheck = true;
                 if (Score.score >= Score.standardScore)
                     GameManager.Instance.StartHiddenGame();
                 else

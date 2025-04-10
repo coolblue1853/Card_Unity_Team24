@@ -7,8 +7,8 @@ public class HiddenGameManager : MonoBehaviour
 {
     public static HiddenGameManager Instance;
     public Text feverTimeScoretxt;
-    public Text backgroundScoretxt;
-
+   // public Text backgroundScoretxt;
+    public float score;
     void Awake()
     {
         if(Instance == null)
@@ -20,14 +20,15 @@ public class HiddenGameManager : MonoBehaviour
   
     void Update()
     {
-        feverTime += Time.deltaTime;
-        feverTimeScoretxt.text = ((int)feverTime).ToString();
-        backgroundScoretxt.text = ((int)feverTime).ToString();
+        score  += Time.deltaTime;
+        feverTimeScoretxt.text = ((int)score).ToString();
+       // backgroundScoretxt.text = (score).ToString();
     }
 
     public void GameEnd()
     {
         Time.timeScale = 0;
-
+        Score.addScore = (int)score;
+        GameManager.Instance.GameClear();
     }
 }

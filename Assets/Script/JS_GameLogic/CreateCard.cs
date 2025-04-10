@@ -23,44 +23,36 @@ public class CreateCard : MonoBehaviour
 
     public void EazyMode()
     {
+        Timer.time = 50;
+        Score.standardScore = 150;
+
         GameManager.Instance.cardCount = 10;
         int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4 };
         Shuffle(arr);
 
-        StartCoroutine(SetCard(arr));
+        StartCoroutine(SetCard(arr, GameMode));
 
     }
 
     public void HardMode()
     {
+        Timer.time = 100;
+        Score.standardScore = 300;
+
         GameManager.Instance.cardCount = 20;
         int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };
         Shuffle(arr);
 
-        int idx = 0;
-
-        for (int i = 0; i < 4; ++i)
-        {
-            for (int j = 0; j < 5; ++j)
-            {
-                GameObject go = Instantiate(cardPrefab, this.transform);
-
-                float x = (j % 5) + (j * 0.1f) - 2.2f;
-                float y = i * 1.25f - 4.2f;
-
-                go.transform.position = new Vector2(x, y);
-                go.GetComponent<Card>().Setting(arr[idx++]);
-            }
-        }
+        StartCoroutine(SetCard(arr, GameMode));
     }
-    IEnumerator SetCard(int[] Array)
+    IEnumerator SetCard(int[] Array, int GameMode)
     {
         int idx = 0;
         for (int i = 0; i < Array.Length; i++)
         {
             GameObject go = Instantiate(cardPrefab, this.transform);
 
-            go.GetComponent<YHCard>().CardMove(i);
+            go.GetComponent<YHCard>().CardMove(i, GameMode);
             go.GetComponent<YHCard>().Setting(Array[i]);
             go.GetComponent<Card>().Setting(Array[idx++]);
             yield return new WaitForSeconds(0.2f);

@@ -8,10 +8,11 @@ public class Timer : MonoBehaviour
 {
     public Text timer;
 
-    public static float time = 200.00f;
+    public static float time = 50.00f;
 
     private void Update()
     {
+        if (GameManager.Instance.isCanFlip == false) return;
         if (GameManager.Instance.isGameEnded == true) return;
 
         if (time > 0.0f)
@@ -21,7 +22,10 @@ public class Timer : MonoBehaviour
 
             if (GameManager.Instance.cardCount <= 0)
             {
-                GameManager.Instance.GameClear();
+                if (Score.score >= Score.standardScore)
+                    GameManager.Instance.StartHiddenGame();
+                else
+                    GameManager.Instance.GameClear();
             }
         }
         else

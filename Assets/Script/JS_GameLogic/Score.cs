@@ -8,14 +8,31 @@ public class Score : MonoBehaviour
 {
     public Text scoreText;
     public static int score = 0;
-    private static Score instance;
+    public static int standardScore = 150;
+    public static int addScore = 0;
+    public static Score instance;
 
     private void Awake()
     {
         scoreText.text = "";
         score = 0;
-        instance = this;
+        addScore = 0;
+        if (instance == null)
+            instance = this;
+        
         UpdateText();
+    }
+    public int GetSocre()
+    {
+        return score;
+    }
+    public int GetAddSocre()
+    {
+        return addScore;
+    }
+    public void SetAddScore(int _addScore)
+    {
+        addScore = _addScore;
     }
 
     public static void PlusScore(int number)

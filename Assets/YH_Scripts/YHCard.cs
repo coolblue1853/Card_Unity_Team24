@@ -65,12 +65,19 @@ public class YHCard : MonoBehaviour
     }
     */
 
-    public void CardMove(int card_number)
+    public void CardMove(int card_number, int GameMode)
     {
-       // float x = (j % 5) + (j * 0.1f) - 2.2f;
-        //float y = i * 1.25f - 4.2f;
-        x = (card_number % 5) * 1.1f - 2.324f;
-        y = (card_number / 5) * 1.2f -0.542f;
+        if(GameMode == 0)
+        {
+            x = (card_number % 5) * 1.1f - 2.15f;
+            y = (card_number / 5) * 1.35f - 2.14f;
+        }
+        else
+        {
+            x = (card_number % 5) * 1.1f - 2.15f;
+            y = (card_number / 5) * 1.5f - 3.9f;
+        }
+
     }
 
     public void DestroyCard()

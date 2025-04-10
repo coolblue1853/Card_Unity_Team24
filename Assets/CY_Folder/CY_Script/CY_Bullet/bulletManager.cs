@@ -9,6 +9,14 @@ public class BulletManager : MonoBehaviour
     public GameObject[] bullets;
     public Transform player;
 
+    public GameObject pivotLD;
+    public GameObject pivotRU;
+    int minX;
+    int minY;
+    int maxX;
+    int maxY;
+
+
     int pivot = 0;
     float startTime;
 
@@ -18,18 +26,28 @@ public class BulletManager : MonoBehaviour
         {
             instance = this;
         }
+        minX = (int)pivotLD.transform.position.x;
+        minY = (int)pivotLD.transform.position.y;
+        maxX = (int)pivotRU.transform.position.x;
+        maxY = (int)pivotRU.transform.position.y;
+
     }
-    void Start()
+    private void OnEnable()
     {
         startTime = Time.time;
         bullets = new GameObject[30];
-        for(int i = 0; i < bullets.Length; i++)
+        for (int i = 0; i < bullets.Length; i++)
         {
             GameObject gameObject = Instantiate(bulletPrefab);
             bullets[i] = gameObject;
             gameObject.SetActive(false);
         }
         StartCoroutine(Shoot());
+
+    }
+    void Start()
+    {
+
     }
 
     IEnumerator Shoot()
@@ -53,7 +71,7 @@ public class BulletManager : MonoBehaviour
         }
         else
         {
-            Vector2 targetPos = new Vector2(Random.Range(-1, 1), Random.Range(-1, 1));
+            Vector2 targetPos = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
             direction = (targetPos - spawn).normalized;
         }
 

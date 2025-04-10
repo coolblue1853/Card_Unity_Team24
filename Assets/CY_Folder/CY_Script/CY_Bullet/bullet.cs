@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
 {
     Vector2 direction;
     float speed;
-
+    public Transform rat;
     private void Start()
     {
 
@@ -20,6 +20,8 @@ public class Bullet : MonoBehaviour
     public void Direction(Vector2 dir , float spd)
     {
         direction = dir.normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        rat.rotation = Quaternion.Euler(0, 0, angle);  // 자식만 회전
         speed = spd;
         StartCoroutine(Disable());
     }

@@ -10,7 +10,7 @@ public class Retry : MonoBehaviour
     {
         CreateCard.GameMode = 0;
         Score.score = 0;
-        Timer.time = 20.0f;
+       // Timer.time = 20.0f;
         Destroy(GameObject.Find("GameManager"));
         SceneManager.LoadScene("Start");
     }

@@ -7,17 +7,14 @@ using UnityEngine.UI;
 public class YHGameManager : MonoBehaviour
 {
     public static YHGameManager Instance;
+    public GameObject leaderBoard;
 
     public YHCard firstCard;
     public YHCard secondCard;
 
-    public Text timeTxt;
-    public GameObject endTxt;
-
     AudioSource audioSource;
     public AudioClip clip;
 
-    public GameObject TimeTxt;
     public GameObject ReadyTxt;
     public GameObject StartTxt;
 
@@ -39,7 +36,7 @@ public class YHGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("ReadyAnimInvoke", 4.5f);
+        Invoke("ReadyAnimInvoke", 3.5f);
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
     }
@@ -59,9 +56,10 @@ public class YHGameManager : MonoBehaviour
     }
 
     void Time_on_Delay()
-    {   
+    {
+        leaderBoard.SetActive(true);
+        GameManager.Instance.isCanFlip = true;
         StartTxt.SetActive(false);
-        TimeTxt.SetActive(true);
         time_on = true;
     }
     // Update is called once per frame
@@ -98,7 +96,7 @@ public class YHGameManager : MonoBehaviour
             if(cardCount == 0)
             {
                 Time.timeScale = 0.0f;
-                endTxt.SetActive(true);
+                //endTxt.SetActive(true);
             }
         }
         else

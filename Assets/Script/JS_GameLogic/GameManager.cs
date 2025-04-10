@@ -8,8 +8,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public  bool isCanFlip = false;
 
-    public GameObject gameOverText;
+    public GameObject hiddenGame;
 
     public Card firstCard;
     public Card secondCard;
@@ -20,11 +21,16 @@ public class GameManager : MonoBehaviour
     public Text score;
 
     public GameObject endGamePanel;
+    public GameObject gameoverPanel;
 
     public int cardCount = 0; // 남은 카드
 
     public bool isGameEnded = false;
     public bool inputBlocked = false;
+
+    public Text endScore;
+    public Text endAddScore;
+    public Text endResultScore;
 
     private void Awake()
     {
@@ -36,11 +42,19 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        gameOverText.SetActive(false);
+        isCanFlip = false;
         isGameEnded = false;
         Time.timeScale = 1.0f;
     }
 
+    public void StartHiddenGame()
+    {
+        timerText.gameObject.SetActive(false);
+        timer.gameObject.SetActive(false);
+        scoreText.gameObject.SetActive(false);
+        score.gameObject.SetActive(false);
+        hiddenGame.SetActive(true);
+    }
     public void GameClear()
     {
         //클리어하면 팀원 사진5개 + 소개
@@ -51,14 +65,18 @@ public class GameManager : MonoBehaviour
 
         endGamePanel.SetActive(true);
 
+        //점수판 반영
+        endScore.text = $"점수 : {Score.instance.GetSocre()}";
+        endAddScore.text = $"추가 : {Score.instance.GetAddSocre()}";
+        endResultScore.text = $"결과 : {Score.instance.GetSocre() + Score.instance.GetAddSocre()}";
         isGameEnded = true;
         Time.timeScale = 0.0f;
     }
 
     public void GameOver()
     {
-        gameOverText.SetActive(true);
         isGameEnded = true;
+        gameoverPanel.SetActive(true);
         Time.timeScale = 0.0f;
     }
 
@@ -125,7 +143,7 @@ public class GameManager : MonoBehaviour
 
         // 클릭 활성화
 
-        Invoke("Card_null_Invoke", 1.0f);
+        Invoke("Card_null_Invoke", 0.5f);
 
     }
     void Destroyd_Invoke()
@@ -142,6 +160,5 @@ public class GameManager : MonoBehaviour
         firstCard = null;
         secondCard = null;
         inputBlocked = false;
-        //Two_card_Open = false;
     }
 }

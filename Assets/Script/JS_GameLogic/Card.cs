@@ -29,6 +29,7 @@ public class Card : MonoBehaviour
 
     public void Flip()
     {
+        if (GameManager.Instance.isCanFlip == false) return;
         if (GameManager.Instance.inputBlocked) return;
 
         isFlipped = !isFlipped;
@@ -75,7 +76,7 @@ public class Card : MonoBehaviour
 
     public void CloseCard()
     {
-        Invoke("CloseCardInvoke", 1.0f);
+        Invoke("CloseCardInvoke", 0.8f);
       //  front.SetActive(false);
       //  back.SetActive(true);
     }

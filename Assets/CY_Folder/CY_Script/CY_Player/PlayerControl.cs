@@ -10,10 +10,18 @@ public class PlayerControl : MonoBehaviour
     public Camera cam;
     float minX, maxX, minY, maxY;
     float halfScale = 0.6935f / 2;
+
+    public GameObject pivotLD;
+    public GameObject pivotRU;
+    private void Awake()
+    {
+        cam = Camera.main;
+    }
     void Start()
     {
-        Vector2 screenBottomLeft = cam.ViewportToWorldPoint(new Vector2(0, 0));
-        Vector2 screenUpRight = cam.ViewportToWorldPoint(new Vector2(1, 1));
+        Vector2 screenBottomLeft = pivotLD.transform.position; ;
+        Vector2 screenUpRight = pivotRU.transform.position; ;
+
         minX = screenBottomLeft.x;
         maxX = screenUpRight.x;
         minY = screenBottomLeft.y;

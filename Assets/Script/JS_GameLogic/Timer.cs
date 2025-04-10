@@ -32,10 +32,12 @@ public class Timer : MonoBehaviour
                     GameManager.Instance.StartHiddenGame();
                 else
                     GameManager.Instance.GameClear();
+                GameManager.Instance.isGameEnded = true;
             }
         }
         else
         {
+            time = 0.0f;
             GameManager.Instance.GameOver();
         }
     }

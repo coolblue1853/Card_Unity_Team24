@@ -36,7 +36,8 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.GameOver();
+            if(GameManager.Instance.isStartedHidden == false)
+                GameManager.Instance.GameOver();
         }
     }
 }

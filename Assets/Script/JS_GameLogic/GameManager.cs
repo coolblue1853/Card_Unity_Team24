@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public  bool isCanFlip = false;
+    public  bool isStartedHidden = false;
 
     public GameObject hiddenGame;
 
@@ -44,11 +45,13 @@ public class GameManager : MonoBehaviour
     {
         isCanFlip = false;
         isGameEnded = false;
+        isStartedHidden = false;
         Time.timeScale = 1.0f;
     }
 
     public void StartHiddenGame()
     {
+        isStartedHidden = true;
         SoundManagerBGM.Instance.FevertimeBgm();
         timerText.gameObject.SetActive(false);
         timer.gameObject.SetActive(false);

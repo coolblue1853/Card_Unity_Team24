@@ -34,7 +34,7 @@ public class RetryButton : MonoBehaviour
 
     public void Add_Imagenumber()
     {
-        if (Image_State < 5)
+        if (Image_State < 4)
         {
             SoundManagerSFX.Instance.ClickSd();
             Image_State++;

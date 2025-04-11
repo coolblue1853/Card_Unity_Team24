@@ -22,7 +22,6 @@ public class Card : MonoBehaviour
         back = transform.Find("Back").gameObject;
 
         sp = front.GetComponent<SpriteRenderer>();
-
         front.SetActive(false);
         back.SetActive(true);
     }
@@ -33,12 +32,15 @@ public class Card : MonoBehaviour
         if (GameManager.Instance.inputBlocked) return;
 
         isFlipped = !isFlipped;
-        // front.SetActive(isFlipped);
-        //   back.SetActive(!isFlipped);
+
+        // 사운드 적용
         SoundManagerSFX.Instance.FlipSd();
+        // 애니메이션 적용
         anim.SetBool("IsOpen", true);
         anim.SetBool("Idlemode", false);
+        // 재클릭 방지
         collider2D.enabled = false;
+
         if (GameManager.Instance.firstCard == null)
         {
             GameManager.Instance.firstCard = this;
@@ -55,9 +57,6 @@ public class Card : MonoBehaviour
 
                 // 클릭 비활성화
                 GameManager.Instance.inputBlocked = true;
-
-                //GameManager.Instance.Matched(); (오류나는거)
-
                 GameManager.Instance.StartCoroutine(GameManager.Instance.MatchedCoroutine());
             }
         }
@@ -77,8 +76,6 @@ public class Card : MonoBehaviour
     public void CloseCard()
     {
         Invoke("CloseCardInvoke", 0.8f);
-      //  front.SetActive(false);
-      //  back.SetActive(true);
     }
     void CloseCardInvoke()
     {

@@ -811,6 +811,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingButton
       objectReference: {fileID: 0}
+    - target: {fileID: 1325676132931521440, guid: 682d938cf215b034898ec903818ce165, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4404472163954763108, guid: 682d938cf215b034898ec903818ce165, type: 3}
       propertyPath: m_UiScaleMode
       value: 1
@@ -4893,7 +4897,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8945228306791465002}
-  - component: {fileID: 8945228306791465003}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -5874,6 +5877,7 @@ GameObject:
   - component: {fileID: 7477233488487016593}
   - component: {fileID: 7477233488487016596}
   - component: {fileID: 7477233488487016595}
+  - component: {fileID: 7477233488487016597}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6731,7 +6735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 811111655671337165, guid: c88a3da9e0f99bb4392f68ce1f23c969, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1222595346682607430, guid: c88a3da9e0f99bb4392f68ce1f23c969, type: 3}
       propertyPath: m_IsActive
@@ -8323,6 +8327,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 4939046953116679283}
+--- !u!114 &7477233488487016597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3837632406206050433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf73f12605009a469d3e83dd174c025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 6206912574855532658, guid: 268334ff659399a4896a9c4dff8ecf7b, type: 3}
 --- !u!224 &7483826305202852443
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9119,19 +9136,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8827168624086893293}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8945228306791465003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205950130086675695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cf73f12605009a469d3e83dd174c025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 6206912574855532658, guid: 268334ff659399a4896a9c4dff8ecf7b, type: 3}
 --- !u!114 &8959044923134845620
 MonoBehaviour:
   m_ObjectHideFlags: 0

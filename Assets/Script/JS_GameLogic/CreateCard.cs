@@ -9,8 +9,12 @@ public class CreateCard : MonoBehaviour
 
     public GameObject cardPrefab;
 
+    bool _isAA;
+
+
     void Shuffle(int[] array)
     {
+        bool isAA;
         for (int i = array.Length - 1; i > 0; i--)
         {
             int j = Random.Range(0, i + 1); // i + 1 Æ÷ÇÔ
@@ -31,7 +35,6 @@ public class CreateCard : MonoBehaviour
         arr = arr.OrderBy(x => Random.Range(0f, 5f)).ToArray();
 
         StartCoroutine(SetCard(arr, GameMode));
-
     }
 
     public void HardMode()
@@ -45,6 +48,8 @@ public class CreateCard : MonoBehaviour
 
         StartCoroutine(SetCard(arr, GameMode));
     }
+
+
     IEnumerator SetCard(int[] Array, int GameMode)
     {
         int idx = 0;

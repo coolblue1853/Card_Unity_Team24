@@ -3,6 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+class Animal
+{
+    protected virtual void Bark()
+    {
+        Debug.Log("!!!");
+    }
+}
+
+class Dog : Animal
+{
+    protected override void Bark()
+    {
+        base.Bark();
+        // Ãß°¡ ~~~
+    }
+}
 
 public class SoundManager : MonoBehaviour
 {

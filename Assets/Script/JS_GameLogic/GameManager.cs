@@ -89,14 +89,15 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = Input.mousePosition;
-            mousePos.z = 10f; // or -Camera.main.transform.position.z;
+            mousePos.z = 10f; // Ray의 거리
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
             Vector2 clickPos = new Vector2(worldPos.x, worldPos.y);
 
             RaycastHit2D hit = Physics2D.Raycast(clickPos, Vector2.zero);
-
+            Debug.DrawRay(clickPos, transform.forward * 10f, Color.red, 1f);
             if (hit.collider != null)
             {
+  
                 var handler = hit.collider.GetComponent<Card>();
                 if (handler != null)
                 {
@@ -150,7 +151,6 @@ public class GameManager : MonoBehaviour
         // 클릭 활성화
 
         Invoke("Card_null_Invoke", 0.5f);
-
     }
     void Destroyd_Invoke()
     {

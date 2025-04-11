@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
+    // 1. 숫자 직업 때려박지 않기.
     public static BulletManager instance;
     public GameObject bulletPrefab;
     public GameObject[] bullets;
@@ -88,27 +89,21 @@ public class BulletManager : MonoBehaviour
                 case 1:
                     pos = new Vector2(Random.Range(-3, 3), Random.Range(5, 6));
                     break;
-
                 case 2:
                     pos = new Vector2(Random.Range(-3, 3), Random.Range(-6, -5));
                     break ;
-
                 case 3:
                     pos = new Vector2(Random.Range(-4, -3), Random.Range(-5, 5));
                     break ;
-
                 case 4:
                     pos = new Vector2(Random.Range(3, 4), Random.Range(-5, 5));
                     break ;
                 }
             return pos;
         }
-
             pivot++;
-
         if(pivot == bullets.Length)
             pivot = 0;
-
         StartCoroutine(Shoot());
     }
 

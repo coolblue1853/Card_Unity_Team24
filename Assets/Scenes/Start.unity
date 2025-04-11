@@ -1093,6 +1093,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 811111655671337165, guid: c88a3da9e0f99bb4392f68ce1f23c969, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6709820481284688049, guid: c88a3da9e0f99bb4392f68ce1f23c969, type: 3}
       propertyPath: m_MatchWidthOrHeight
       value: 0
